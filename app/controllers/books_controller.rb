@@ -4,7 +4,10 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.where("title LIKE ?", "%#{params[:search]}%")
+    @books = Book.search(params[:page]).where('title like ?', "%#{params[:search]}%")
+    # @books = Book.paginate :per_page => 5, :page => params[:page],
+    #                        :conditions => ['title like ?', "%#{params[:search]}%"],
+    #                        :order => 'title'
   end
 
   # GET /books/1

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :bukus
   resources :books
-  get 'books' => 'books#index', as: :buku
+  
   devise_for :authors
   root to: 'blog/posts#index'
 
